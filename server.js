@@ -17,13 +17,8 @@ flash           = require('connect-flash'),
 session         = require('express-session'),
 morgan          = require('morgan'),
 cookieParser    = require('cookie-parser'),
-githubRoutes    = require('./routes/github'),
-Twit            = require('twit'),
 commentModel    = require('./models/comment'),
-prettydate      = require("pretty-date"),
-blogModel       = require('./models/blog'),
-fetchWakaEvents = require('./routes/wakaRoutes');
-// Chart           = require('chart.js');
+blogModel       = require('./models/blog');
 
 
 
@@ -75,12 +70,7 @@ app.options("*", function(req, res) {
   res.header('Access-Control-Allow-Methods', 'GET, OPTIONS');
   res.header('Access-Control-Allow-Headers', 'Content-Type');
 });
-var T = new Twit({
-  consumer_key: process.env.CONSUMER_KEY, 
-  consumer_secret: process.env.CONSUMER_SECRET,
-  access_token: process.env.ACCESS_TOKEN,
-  access_token_secret: process.env.ACCESS_SECRET
-});
+
 app.set('view engine', 'ejs');
 
 // set up our express application
@@ -96,32 +86,6 @@ app.use(flash()); // use connect-flash for flash messages stored in session
 
 require('./config/passport')(passport);
 require('./routes/userRoutes.js')(app, passport); // load routes & pass in app & fully configed passport
-
-
-
-var fetchTweets = function(req, res){
-  var twitterHandle = req.params.twitterHandle;
-
-  T.get('statuses/user_timeline', { screen_name: twitterHandle, count: 1 },
-    function(err, data, response) {
-
-      // var justTweets = [];
-
-      // data.forEach(function(obj){
-      //   justTweets.push(obj.text);
-      // });
-      res.send(data);
-    });
-}
-
-
-app.use('/api/github', githubRoutes);
-app.use('/api/T/:twitterHandle', fetchTweets);
-app.use('/api/Waka', fetchWakaEvents);
-
-
-
-
 
 
 

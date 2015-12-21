@@ -4,29 +4,32 @@ var webpack = require('webpack');
 module.exports = {
   devtool: 'eval',
   entry: {
-  blog: ['webpack-hot-middleware/client',
-    './client/blog'],
-  blogForm: ['webpack-hot-middleware/client',
-    './client/blogForm'],
-  github: ['webpack-hot-middleware/client',
+    
+    home: ['webpack-hot-middleware/client',
     './client/index']
-
-},
+    
+  },
   output: {
     path: path.join(__dirname, 'static'),
     filename: '[name].js',
     publicPath: '/static/',
-    plugins: [new webpack.optimize.CommonsChunkPlugin('init.js')]
+    plugins: [ new webpack.optimize.CommonsChunkPlugin("init.js") ]
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoErrorsPlugin()
   ],
   module: {
-    loaders: [{
-      test: /\.js$/,
-      loaders: ['babel'],
-      include: path.join(__dirname, 'client')
+    loaders: [
+      {
+        test: /\.js$/,
+        loader: 'babel',
+        exclude: /node_modules/,
+      include: path.join(__dirname, 'client'),
+         query: {
+                   cacheDirectory: true,
+                    presets: ['es2015', 'react']
+                }
     }]
   }
 };
