@@ -93,7 +93,7 @@ require('./routes/userRoutes.js')(app, passport); // load routes & pass in app &
 
 // routes ======================================================================
 
-app.use('/api/blog/', blogRoutes);
+app.use('/api/book/', blogRoutes);
 
 
 app.set('port', process.env.PORT || 4000);

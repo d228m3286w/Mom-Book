@@ -1,3 +1,54 @@
 #momName {
   color: white;
 }
+.jumbotron {
+  background-color: rgba(100, 100, 100, 0.9);
+  margin-top: -20px;
+  margin-bottom: 20px;
+}
+body {
+  background-color: grey;
+}
+/****************BOOK BOXS********************/
+#boxBook {
+  background-color: rgba(150,150,150, 0.7);
+  margin-bottom: 100px;
+  border: solid green 2px;
+  padding: 12px;
+  box-shadow: 2px 3px 14px 2px green;
+}
+#bookName {
+  text-align: center;
+}
+#bookDetails{
+   display: flex;
+   justify-content: space-between;
+}
+
+#book-img {
+ width: 30%;
+ height: 30%;
+
+}
+.textAboutBook {
+  margin-left: 2%;
+}
+#boxBook2 {
+  background-color: rgba(250,250,250, 0.4);
+  margin-bottom: 150px;
+  border: solid tomato 2px;
+  padding: 12px;
+  box-shadow: 2px 3px 14px 2px red;
+}
+#bookName2 {
+  text-align: center;
+}
+#bookDetails2 {
+   display: flex;
+   justify-content: space-between;
+}
+
+.textAboutBook2 {
+  margin-left: 2%;
+}
+/****************************************************/

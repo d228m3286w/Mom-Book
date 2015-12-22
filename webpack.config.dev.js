@@ -6,7 +6,11 @@ module.exports = {
   entry: {
     
     home: ['webpack-hot-middleware/client',
-    './client/index']
+    './client/index'],
+    blogForm: ['webpack-hot-middleware/client',
+    './client/blogForm'],
+    blog: ['webpack-hot-middleware/client',
+    './client/blog']
     
   },
   output: {
